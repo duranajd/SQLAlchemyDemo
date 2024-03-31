@@ -1,8 +1,7 @@
-# check sql version
-import sqlalchemy
-
-# connect to a database
-from sqlalchemy import create_engine, text
+# imports required functions 
+from sqlalchemy import * #imports all functions
+from sqlalchemy import create_engine, text #imports specific functions
+from sqlalchemy.orm import Session #imports specific function for session
 
 # create engine with pooling capabilities
 global my_engine
@@ -21,7 +20,6 @@ with my_engine.connect() as conn:
 
 # showing off commit and other sql commands
 with my_engine.connect() as conn:
-
   conn.execute(text("CREATE TABLE newTable (a int, b text)"))
   conn.execute(text("INSERT INTO newTable (a, b) VALUES (:a, :b)"), [{"a": 1, "b": "hello"}])
   conn.commit()
@@ -30,6 +28,3 @@ with my_engine.connect() as conn:
 #do an example of using the python syntax for writing queries
   
 #do an example of session stuff (truthfully IDK how to really do this in an example that makes sense)
-  
-#add an example section here that uses results.fetchall() and results.fetchone(), add to guide as well?
-
